@@ -1,12 +1,12 @@
 @keyframes buttonRound {
   0% {
-    margin: 40px 0 246px 0;
+    margin: 40px 0 107px 0;
   }
   50% {
-    margin: 40px 0 276px 0;
+    margin: 40px 0 137px 0;
   }
   100% {
-    margin: 40px 0 246px 0;
+    margin: 40px 0 107px 0;
   }
 }
 @keyframes sliderBackground {
@@ -46,6 +46,17 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+@keyframes texesImager {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 body::-webkit-scrollbar {
@@ -308,7 +319,7 @@ body {
   flex-direction: column;
   gap: 10px;
   width: 620px;
-  padding: 132px 0 216px 0;
+  padding: 132px 0 107px 0;
   margin: auto 0 0 0;
 }
 .main .mainContainer .leftBlock .heading1 {
@@ -356,7 +367,7 @@ body {
   line-height: 140%; /* 30.8px */
 }
 .main .mainContainer .rightBlock .buttonRound {
-  margin: 40px 0 246px 0;
+  margin: 40px 0 107px 0;
   flex-shrink: 0;
   width: 200px;
   height: 200px;
@@ -687,10 +698,26 @@ body {
   position: relative;
   width: 50%;
   height: 100vh;
-  background-color: aquamarine;
   flex-shrink: 0;
   display: flex;
   padding: 147px 0 0 0;
+}
+.fadeWrapper .fadeSticky .stickyContainer .taxes .blur {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2700px;
+  border-radius: 2700px;
+  height: 439px;
+  z-index: 1;
+  background: var(--Black, #07031f);
+  filter: blur(110px);
+  opacity: 0;
+  transition: 0.25s ease-out opacity;
+}
+.fadeWrapper .fadeSticky .stickyContainer .taxes .blur.active {
+  opacity: 1;
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer {
   display: flex;
@@ -716,6 +743,7 @@ body {
   height: 100%;
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .taxesImages .taxesImagesWrapper .taxesImagerItem {
+  animation: 4s texesImager ease-in-out infinite;
   position: absolute;
   padding: 75px 38px 49px 38px;
   width: 100%;
@@ -730,19 +758,19 @@ body {
   transform: scale(1.25) translate(10%, 15%);
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .taxesImages.step6 {
-  transform: scale(1.5) translate(15%, 35%);
+  transform: scale(1.5) translate(16%, 30%);
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .taxesImages.step7 {
-  transform: scale(1.75) translate(15%, 50%);
+  transform: scale(1.75) translate(18%, 39%);
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .navigation {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 500px;
   width: -moz-max-content;
   width: max-content;
-  z-index: 2;
+  transition: 0.25s ease-out height;
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .navigation .navigationItem {
   background: none;
@@ -752,7 +780,7 @@ body {
   color: var(--White);
   opacity: 0.4;
   text-align: left;
-  transition: 0.25s ease-out transform, 0.25s ease-out opacity, 0.25s ease-out color;
+  transition: 0.25s ease-out font-size, 0.25s ease-out opacity, 0.25s ease-out color;
   padding: 0;
   transform-origin: left;
 }
@@ -761,9 +789,15 @@ body {
   opacity: 1;
 }
 .fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .navigation .navigationItem.active {
-  transform: scale(2.333);
+  font-size: 112px;
   opacity: 1;
   color: var(--White);
+}
+.fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .navigation.small {
+  height: 454px;
+}
+.fadeWrapper .fadeSticky .stickyContainer .taxes .taxesContainer .navigation.big {
+  height: 515px;
 }
 .fadeWrapper.step2 {
   z-index: 2;
@@ -869,17 +903,42 @@ body {
   display: flex;
   flex-direction: column;
 }
-.get .rightBlock .textContainer .heading3 {
-  color: var(--White);
+.get .rightBlock .textContainer .headingContainer {
+  width: 100%;
+  position: relative;
+  transition: 0.25s ease-out height;
 }
-.get .rightBlock .textContainer .step {
+.get .rightBlock .textContainer .headingContainer .sliderSubtitle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--White);
+  opacity: 0;
+  transition: 0.25s ease-out opacity;
+}
+.get .rightBlock .textContainer .headingContainer .sliderSubtitle.active {
+  opacity: 1;
+}
+.get .rightBlock .textContainer .stepContainer {
+  position: relative;
   margin: 5px 0 0 0;
+  height: 26px;
+}
+.get .rightBlock .textContainer .stepContainer .step {
+  position: absolute;
+  top: 0;
+  left: 0;
   color: var(--Orange, #f6a325);
   font-family: Ubuntu;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 130%; /* 26px */
+  opacity: 0;
+  transition: 0.25s ease-out opacity;
+}
+.get .rightBlock .textContainer .stepContainer .step.active {
+  opacity: 1;
 }
 .get .rightBlock .textContainer .descriptionContainer {
   margin: 25px 0 0 0;
@@ -935,22 +994,22 @@ body {
   padding: 0px 0 26px 0;
   transition: 0.25s ease-out height;
 }
-.faq .faqContainer .accordionContainer .accordionItem .headingContainer {
+.faq .faqContainer .accordionContainer .accordionItem .headingAccordionContainer {
   display: flex;
   align-items: center;
   gap: 17px;
   padding: 22px 0 26px 0;
   cursor: pointer;
 }
-.faq .faqContainer .accordionContainer .accordionItem .headingContainer .heading5 {
+.faq .faqContainer .accordionContainer .accordionItem .headingAccordionContainer .heading5 {
   transition: 0.25s ease-out color;
 }
-.faq .faqContainer .accordionContainer .accordionItem .headingContainer .cross {
+.faq .faqContainer .accordionContainer .accordionItem .headingAccordionContainer .cross {
   width: 16px;
   height: 16px;
   position: relative;
 }
-.faq .faqContainer .accordionContainer .accordionItem .headingContainer .cross div {
+.faq .faqContainer .accordionContainer .accordionItem .headingAccordionContainer .cross div {
   width: 100%;
   height: 2px;
   background: var(--White);
@@ -961,7 +1020,7 @@ body {
   z-index: 1;
   transition: 0.25s ease-out transform, 0.25s ease-out background;
 }
-.faq .faqContainer .accordionContainer .accordionItem .headingContainer .cross div:last-child {
+.faq .faqContainer .accordionContainer .accordionItem .headingAccordionContainer .cross div:last-child {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 .faq .faqContainer .accordionContainer .accordionItem .accordionDescriptions {
@@ -1032,7 +1091,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.25s ease-out background;
+  transition: 0.25s ease-out background, 0.25s ease-out border-radius;
 }
 .footer .footerContainer .footerSocial .socialItem svg {
   width: 60px;
@@ -1043,6 +1102,7 @@ body {
 }
 .footer .footerContainer .footerSocial .socialItem:hover {
   background-color: var(--Orange);
+  border-radius: 18px;
 }
 .footer .footerContainer .footerSocial .socialItem:hover svg path {
   fill: var(--White);

@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const fadeWrapper = document.querySelector(".fadeWrapper");
   const taxesImages = document.querySelector(".taxesImages");
   const taxesImagerItem = document.querySelectorAll(".taxesImagerItem");
+  const navigation = document.querySelector(".navigation");
+  const blur = document.querySelector(".blur");
 
   window.onscroll = function () {
     var scrollTop = window.pageYOffset
@@ -60,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         fadeWrapper.classList.add("step2");
       }, 10);
     } else {
-      
       about.classList.remove("step2");
       fadeWrapper.classList.remove("step2");
       aboutBackground.classList.remove("step2");
@@ -71,6 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
       stickyContainer.classList.remove("step3");
     }
     if (scrollTop >= screenHeight * 3) {
+      blur.classList.remove("active");
+      navigation.classList.add("small");
+      navigation.classList.remove("big");
       stickyContainer.classList.add("step4");
       texesNav[0].classList.add("active");
     } else {
@@ -78,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
       texesNav[0].classList.add("active");
     }
     if (scrollTop >= screenHeight * 3.5) {
+      blur.classList.add("active");
+      navigation.classList.add("big");
+      navigation.classList.remove("small");
       taxesImagerItem[1].classList.add("active");
       taxesImagerItem[0].classList.remove("active");
       taxesImages.classList.add("step5");
@@ -95,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
       texesNav[1].classList.remove("active");
     }
     if (scrollTop >= screenHeight * 4) {
+      navigation.classList.add("small");
+      navigation.classList.remove("big");
       taxesImagerItem[2].classList.add("active");
       taxesImagerItem[1].classList.remove("active");
 
@@ -113,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
       texesNav[2].classList.remove("active");
     }
     if (scrollTop >= screenHeight * 4.5) {
+      navigation.classList.add("big");
+      navigation.classList.remove("small");
       taxesImagerItem[3].classList.add("active");
       taxesImagerItem[2].classList.remove("active");
       taxesImages.classList.add("step7");
@@ -124,13 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
-     
       taxesImagerItem[3].classList.remove("active");
       taxesImages.classList.remove("step7");
       fadeBackground.classList.remove("step7");
       texesNav[3].classList.remove("active");
     }
   };
+
   const texesNav = document.querySelectorAll(".navigationItem");
 
   texesNav.forEach((item, index) => {
@@ -265,6 +276,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let buttonNext = document.querySelector(".next");
   let buttonPrev = document.querySelector(".prev");
   let getDescription = document.querySelectorAll(".getDescription");
+  let sliderSubtitle = document.querySelectorAll(".sliderSubtitle");
+  let headingContainer = document.querySelector(".headingContainer");
+  let step = document.querySelectorAll(".step");
+  headingContainer.style.height =
+  sliderSubtitle[0].offsetHeight + "px";
 
   function nextSlide() {
     buttonPrev.classList.remove("active");
@@ -278,6 +294,13 @@ document.addEventListener("DOMContentLoaded", function () {
       ) {
         getDescription[i + 1].classList.add("active");
         getDescription[i].classList.remove("active");
+        step[i + 1].classList.add("active");
+        step[i].classList.remove("active");
+
+        sliderSubtitle[i + 1].classList.add("active");
+        sliderSubtitle[i].classList.remove("active");
+        headingContainer.style.height =
+          sliderSubtitle[i + 1].offsetHeight + "px";
         slides[i + 1].classList.replace("centr", "active");
         slides[i].classList.replace("active", "_none");
         if (slides[i + 2]) {
@@ -305,6 +328,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (slides[i - 1]) {
           getDescription[i].classList.remove("active");
           getDescription[i - 1].classList.add("active");
+          step[i].classList.remove("active");
+          step[i - 1].classList.add("active");
+          sliderSubtitle[i].classList.remove("active");
+          sliderSubtitle[i - 1].classList.add("active");
+          headingContainer.style.height =
+            sliderSubtitle[i - 1].offsetHeight + "px";
           slides[i - 1].classList.replace("_none", "active");
           slides[i].classList.replace("active", "centr");
 
@@ -376,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Accordion
   const accordionItem = document.querySelectorAll(".accordionItem"),
-    accordionTitle = document.querySelectorAll(".headingContainer"),
+    accordionTitle = document.querySelectorAll(".headingAccordionContainer"),
     accordionDescriptions = document.querySelectorAll(".accordionDescriptions");
 
   for (let i = 0; i < accordionItem.length; i++) {
