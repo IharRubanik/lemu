@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const smoothLinks = document.querySelectorAll('a[href^="#"]');
+  for (let smoothLink of smoothLinks) {
+    smoothLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const id = smoothLink.getAttribute("href");
+
+      document.querySelector(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
   const mediaQuery = window.matchMedia("only screen and (max-width: 600px)");
 
   let circlBackground = document.querySelector(".circl-background");
@@ -23,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fadeBackground = document.querySelector(".fadeWrapperBackground");
   const fadeWrapper = document.querySelector(".fadeWrapper");
   const taxesImages = document.querySelector(".taxesImages");
+  const taxesImagerItem = document.querySelectorAll(".taxesImagerItem");
 
   window.onscroll = function () {
     var scrollTop = window.pageYOffset
@@ -38,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       aboutBackground.classList.remove("step1");
     }
     if (scrollTop >= screenHeight * 2) {
+      taxesImagerItem[0].classList.add("active");
       aboutBackground.classList.add("step2");
       about.classList.add("step2");
 
@@ -45,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fadeWrapper.classList.add("step2");
       }, 10);
     } else {
+      
       about.classList.remove("step2");
       fadeWrapper.classList.remove("step2");
       aboutBackground.classList.remove("step2");
@@ -62,6 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
       texesNav[0].classList.add("active");
     }
     if (scrollTop >= screenHeight * 3.5) {
+      taxesImagerItem[1].classList.add("active");
+      taxesImagerItem[0].classList.remove("active");
       taxesImages.classList.add("step5");
       fadeBackground.classList.add("step5");
       texesNav[1].classList.add("active");
@@ -71,11 +89,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
+      taxesImagerItem[1].classList.remove("active");
       taxesImages.classList.remove("step5");
       fadeBackground.classList.remove("step5");
       texesNav[1].classList.remove("active");
     }
     if (scrollTop >= screenHeight * 4) {
+      taxesImagerItem[2].classList.add("active");
+      taxesImagerItem[1].classList.remove("active");
+
       taxesImages.classList.add("step6");
       fadeBackground.classList.add("step6");
       texesNav[2].classList.add("active");
@@ -85,12 +107,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
+      taxesImagerItem[2].classList.remove("active");
       taxesImages.classList.remove("step6");
       fadeBackground.classList.remove("step6");
       texesNav[2].classList.remove("active");
     }
     if (scrollTop >= screenHeight * 4.5) {
-        taxesImages.classList.add("step7");
+      taxesImagerItem[3].classList.add("active");
+      taxesImagerItem[2].classList.remove("active");
+      taxesImages.classList.add("step7");
       fadeBackground.classList.add("step7");
       texesNav[3].classList.add("active");
       for (let i = 0; i < texesNav.length; i++) {
@@ -99,7 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
-        taxesImages.classList.remove("step7");
+     
+      taxesImagerItem[3].classList.remove("active");
+      taxesImages.classList.remove("step7");
       fadeBackground.classList.remove("step7");
       texesNav[3].classList.remove("active");
     }

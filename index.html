@@ -33,11 +33,11 @@
             </svg>
           </div>
           <nav class="nav">
-            <a href="" class="navItem textMini">about</a>
-            <a href="" class="navItem textMini">journey</a>
-            <a href="" class="navItem textMini">lemunomics</a>
-            <a href="" class="navItem textMini">how to get</a>
-            <a href="" class="navItem textMini">faq</a>
+            <a href="#about" class="navItem textMini">about</a>
+            <a href="#wantsYou" class="navItem textMini">journey</a>
+            <a href="#taxes" class="navItem textMini">lemunomics</a>
+            <a href="#get" class="navItem textMini">how to get</a>
+            <a href="#faq" class="navItem textMini">faq</a>
           </nav>
           <div class="socialContainer">
             <a href="" class="socialItem">
@@ -85,7 +85,7 @@
         </a>
       </div>
     </header>
-    <main class="main">
+    <main id="main" class="main">
       <img src="./img/mainBackground.png" alt="lemu" class="mainBackground">
       <img src="./img/grass.gif" class="grass">
       <div class="mainContainer _container">
@@ -128,11 +128,10 @@
         </div>
       </div>
     </main>
-    <section id="beginning" class="about">
+    <section id="about" class="about">
       <div class="aboutWrapper ">
         <img src="./img/aboutBackground.png" class="aboutBackground">
         <div class="aboutContainer _container">
-         
           <div class="leftBlock">
             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
               <path d="M1 1L5 5L9 1" stroke="white" stroke-width="2"/>
@@ -192,7 +191,7 @@
       <div class="fadeSticky">
         <div class="stickyContainer">
           <img src="./img/fadeWrapperBackground.png" class="fadeWrapperBackground" alt="">
-          <section class="wantsYou">
+          <section id="wantsYou" class="wantsYou">
             <div class="wantsYouContainer _container">
               <h2 class="heading2">Lemu
                 Wants You!</h2>
@@ -206,9 +205,15 @@
               <a href="#" class="button">join now</a>
             </div>
           </section>
-          <section class="taxes">
+          <section id="taxes" class="taxes">
             <div class="taxesContainer _container">
               <div class="taxesImages">
+                <div class="taxesImagesWrapper">
+                  <img src="./img/taxesImagesItem1.png" alt="" class="taxesImagerItem">
+                  <img src="./img/taxesImagesItem2.png" alt="" class="taxesImagerItem">
+                  <img src="./img/taxesImagesItem3.png" alt="" class="taxesImagerItem">
+                  <img src="./img/taxesImagesItem4.png" alt="" class="taxesImagerItem">
+                </div>
 
               </div>
               <span class="miniExplanation textMini">Lemunomics</span>
@@ -225,7 +230,7 @@
         </div>
       </div>
     </div>
-    <section class="get">
+    <section id="get" class="get">
       <img src="./img/getBackground.png" alt="" class="background">
       <div class="getContainer _container">
         <h2 class="heading2">How To Get
@@ -270,8 +275,7 @@
     </section>
     <div class="footerWrapper">
       <img src="./img/footerBackground.jpg" alt="" class="footerBackgroung">
-
-      <section class="faq">
+      <section id="faq" class="faq">
         <div class="faqContainer _container">
           <h2 class="heading2">Faq</h2>
           <div class="accordionContainer">
