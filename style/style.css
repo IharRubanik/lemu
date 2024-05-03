@@ -1072,6 +1072,7 @@ body {
 }
 .get .rightBlock .textContainer .descriptionContainer .getDescription.active {
   opacity: 1;
+  z-index: 1;
 }
 
 .footerWrapper {
