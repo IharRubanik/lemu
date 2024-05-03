@@ -146,8 +146,8 @@ body {
 .miniExplanation {
   padding: 0.417vw 0.833vw;
   border-radius: 0.417vw;
-  border-right: 0.052vw solid var(--Orange, #f6a325);
-  border-left: 0.052vw solid var(--Orange, #f6a325);
+  border-right: 0.052vw solid var(--Orange);
+  border-left: 0.052vw solid var(--Orange);
   height: min-content;
   color: var(--White);
   width: max-content;
@@ -161,8 +161,8 @@ body {
   align-items: center;
   gap: 2.031vw;
   border-radius: 0.417vw;
-  background: var(--White, #fff);
-  color: var(--Black, #07031f);
+  background: var(--White);
+  color: var(--Black);
   text-align: center;
   font-family: Ubuntu;
   font-size: 1.146vw;
@@ -173,7 +173,7 @@ body {
   transition: 0.25s ease-out background, 0.25s ease-out border-radius;
   &:hover {
     border-radius: 0.938vw;
-    background: var(--Orange, #f6a325);
+    background: var(--Orange);
   }
 }
 .buttonSlider {
@@ -248,7 +248,7 @@ body {
         }
 
         span {
-          color: var(--White, #fff);
+          color: var(--White);
           text-align: center;
           font-family: Ubuntu;
           font-size: 0.938vw;
@@ -430,7 +430,7 @@ body {
           display: flex;
           gap: 1.51vw;
           .number {
-            color: var(--White, #fff);
+            color: var(--White);
             font-family: RIVERSEA;
             font-size: 6.875vw;
             font-style: normal;
@@ -464,7 +464,7 @@ body {
           0.25s ease-out transform, 0.25s ease-out background;
         animation: 3s buttonRound linear infinite;
         span {
-          color: var(--Black, #07031f);
+          color: var(--Black);
           text-align: center;
           font-family: Ubuntu;
           font-size: 1.146vw;
@@ -797,7 +797,7 @@ body {
           border-radius: 140.625vw;
           height: 22.865vw;
           z-index: 1;
-          background: var(--Black, #07031f);
+          background: var(--Black);
           filter: blur(5.729vw);
           opacity: 0;
           transition: 0.25s ease-out opacity;
@@ -1024,7 +1024,7 @@ body {
           position: absolute;
           top: 0;
           left: 0;
-          color: var(--Orange, #f6a325);
+          color: var(--Orange);
           font-family: Ubuntu;
           font-size: 1.042vw;
           font-style: normal;
@@ -1179,7 +1179,7 @@ body {
         height: auto;
       }
       .leunity {
-        color: var(--Orange, #f6a325);
+        color: var(--Orange);
         text-align: right;
         font-family: RIVERSEA;
         font-size: 8.333vw;
@@ -1224,7 +1224,7 @@ body {
     .powered {
       display: flex;
       gap: 0.313vw;
-      color: var(--White, #fff);
+      color: var(--White);
       font-family: Ubuntu;
       font-size: 0.625vw;
       font-style: normal;
