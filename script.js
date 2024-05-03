@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // loader
+
+window.addEventListener('load', function(){
   function ifPreloaderLoad() {
     document.querySelector(".loader").classList.add("done");
   }
@@ -25,6 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setTimeout(ifPreloaderLoad, 3000);
   setTimeout(removePreloader, 3500);
+
+})
+
 
   const mediaQuery = window.matchMedia("only screen and (max-width: 1000px)");
 
