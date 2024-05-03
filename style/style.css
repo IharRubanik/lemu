@@ -84,6 +84,7 @@ body {
   --White: #ffffff;
   --Orange: #f6a325;
   --Light-text: #83a2cb;
+  --app-height: 100%;
 }
 
 .heading1 {
@@ -794,6 +795,19 @@ body {
   display: flex;
   padding: 7.656vw 0 0 0;
 }
+.fadeWrapper .fadeSticky .stickyContainer .taxes .round {
+  position: absolute;
+  left: 56.25vw;
+  top: 7.344vw;
+  width: 26.042vw;
+  height: auto;
+  opacity: 0;
+  transition: 0.25s ease-out opacity;
+}
+.fadeWrapper .fadeSticky .stickyContainer .taxes .round.active {
+  opacity: 1;
+  z-index: 3;
+}
 .fadeWrapper .fadeSticky .stickyContainer .taxes .blur {
   position: absolute;
   bottom: -10.417vw;
@@ -1051,6 +1065,10 @@ body {
   left: 0;
   opacity: 0;
   transition: 0.25s ease-out opacity;
+}
+.get .rightBlock .textContainer .descriptionContainer .getDescription a {
+  color: var(--Orange);
+  text-decoration: underline;
 }
 .get .rightBlock .textContainer .descriptionContainer .getDescription.active {
   opacity: 1;

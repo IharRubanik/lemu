@@ -94,6 +94,7 @@
   }
   .wrapper {
     .loader {
+      height: var(--app-height);;
       .loaderContainer {
         .title {
           width: 58.667vw;
@@ -460,6 +461,13 @@
           display: flex;
           padding: 48vw 0 13.333vw 0;
           opacity: 1;
+          .round {
+           
+            left: 7.2vw;
+            top: -13.333vw;
+            width: 48.8vw;
+            height: auto;
+          }
           .blur {
             display: none;
           }

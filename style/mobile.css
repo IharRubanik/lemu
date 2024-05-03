@@ -89,6 +89,9 @@
   .buttonSlider:hover {
     border: 0.267vw solid var(--Orange);
   }
+  .wrapper .loader {
+    height: var(--app-height);
+  }
   .wrapper .loader .loaderContainer .title {
     width: 58.667vw;
     height: auto;
@@ -443,6 +446,12 @@
     display: flex;
     padding: 48vw 0 13.333vw 0;
     opacity: 1;
+  }
+  .fadeWrapper .fadeSticky .stickyContainer .taxes .round {
+    left: 7.2vw;
+    top: -13.333vw;
+    width: 48.8vw;
+    height: auto;
   }
   .fadeWrapper .fadeSticky .stickyContainer .taxes .blur {
     display: none;
