@@ -296,7 +296,7 @@ body {
     }
   }
 
-  .blur {
+  .menuBlur {
     display: none;
   }
 }
@@ -696,9 +696,9 @@ body {
   }
 }
 .fadeWrapper {
-  margin: -250vw 0 0 0;
+  margin: -250vh 0 0 0;
   position: relative;
-  height: 650vh;
+  height: 500vh;
   width: 100%;
   .fadeSticky {
     overflow: hidden;
