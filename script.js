@@ -1,3 +1,4 @@
+document.querySelector('body').style.overflowY = 'hidden';
 document.addEventListener("DOMContentLoaded", function () {
   const smoothLinks = document.querySelectorAll('a[href^="#"]');
   for (let smoothLink of smoothLinks) {
@@ -12,7 +13,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const mediaQuery = window.matchMedia("only screen and (max-width: 600px)");
+
+// loader
+function ifPreloaderLoad() {
+  document.querySelector('.loader').classList.add('done');
+}
+function removePreloader() {
+  document.querySelector('.loader').remove();
+  document.querySelector('body').style.overflowY = 'auto';
+  window.scrollTo(0, 0);
+}
+
+setTimeout(ifPreloaderLoad, 3000);
+setTimeout(removePreloader, 3500);
+
+
+
+
+  const mediaQuery = window.matchMedia("only screen and (max-width: 1000px)");
+  const openMenu = document.querySelector(".open-menu");
+  const closeMemu = document.querySelector(".close-menu");
+  const header = document.querySelector(".header");
+  const body = document.querySelector("body");
+  const menuBlur = document.querySelector(".menuBlur");
+  if (mediaQuery.matches) {
+    openMenu.addEventListener("click", function () {
+      header.classList.add("active");
+      body.style.overflow = "hidden";
+      menuBlur.classList.add("active");
+      menuBlur.style.zIndex = 19;
+    });
+    closeMemu.addEventListener("click", function () {
+      header.classList.remove("active");
+      body.style.overflow = "visible";
+      menuBlur.classList.remove("active");
+      setTimeout(() => {
+        menuBlur.style.zIndex = -1;
+      }, 250);
+    });
+  }
 
   let circlBackground = document.querySelector(".circl-background");
   let circl2 = document.querySelector(".top");
@@ -39,148 +78,155 @@ document.addEventListener("DOMContentLoaded", function () {
   const taxesImagerItem = document.querySelectorAll(".taxesImagerItem");
   const navigation = document.querySelector(".navigation");
   const blur = document.querySelector(".blur");
-
-  window.onscroll = function () {
-    var scrollTop = window.pageYOffset
-      ? window.pageYOffset
-      : document.documentElement.scrollTop
-      ? document.documentElement.scrollTop
-      : document.body.scrollTop;
-    if (scrollTop >= screenHeight * 1.5) {
-      aboutContainer.classList.add("step1");
-      aboutBackground.classList.add("step1");
-    } else {
-      aboutContainer.classList.remove("step1");
-      aboutBackground.classList.remove("step1");
-    }
-    if (scrollTop >= screenHeight * 2) {
-      taxesImagerItem[0].classList.add("active");
-      aboutBackground.classList.add("step2");
-      about.classList.add("step2");
-
-      setTimeout(() => {
-        fadeWrapper.classList.add("step2");
-      }, 10);
-    } else {
-      about.classList.remove("step2");
-      fadeWrapper.classList.remove("step2");
-      aboutBackground.classList.remove("step2");
-    }
-    if (scrollTop >= screenHeight * 2.5) {
-      stickyContainer.classList.add("step3");
-    } else {
-      stickyContainer.classList.remove("step3");
-    }
-    if (scrollTop >= screenHeight * 3) {
-      blur.classList.remove("active");
-      navigation.classList.add("small");
-      navigation.classList.remove("big");
-      stickyContainer.classList.add("step4");
-      texesNav[0].classList.add("active");
-    } else {
-      stickyContainer.classList.remove("step4");
-      texesNav[0].classList.add("active");
-    }
-    if (scrollTop >= screenHeight * 3.5) {
-      blur.classList.add("active");
-      navigation.classList.add("big");
-      navigation.classList.remove("small");
-      taxesImagerItem[1].classList.add("active");
-      taxesImagerItem[0].classList.remove("active");
-      taxesImages.classList.add("step5");
-      fadeBackground.classList.add("step5");
-      texesNav[1].classList.add("active");
-      for (let i = 0; i < texesNav.length; i++) {
-        if (i !== 1) {
-          texesNav[i].classList.remove("active");
-        }
-      }
-    } else {
-      taxesImagerItem[1].classList.remove("active");
-      taxesImages.classList.remove("step5");
-      fadeBackground.classList.remove("step5");
-      texesNav[1].classList.remove("active");
-    }
-    if (scrollTop >= screenHeight * 4) {
-      navigation.classList.add("small");
-      navigation.classList.remove("big");
-      taxesImagerItem[2].classList.add("active");
-      taxesImagerItem[1].classList.remove("active");
-
-      taxesImages.classList.add("step6");
-      fadeBackground.classList.add("step6");
-      texesNav[2].classList.add("active");
-      for (let i = 0; i < texesNav.length; i++) {
-        if (i !== 2) {
-          texesNav[i].classList.remove("active");
-        }
-      }
-    } else {
-      taxesImagerItem[2].classList.remove("active");
-      taxesImages.classList.remove("step6");
-      fadeBackground.classList.remove("step6");
-      texesNav[2].classList.remove("active");
-    }
-    if (scrollTop >= screenHeight * 4.5) {
-      navigation.classList.add("big");
-      navigation.classList.remove("small");
-      taxesImagerItem[3].classList.add("active");
-      taxesImagerItem[2].classList.remove("active");
-      taxesImages.classList.add("step7");
-      fadeBackground.classList.add("step7");
-      texesNav[3].classList.add("active");
-      for (let i = 0; i < texesNav.length; i++) {
-        if (i !== 3) {
-          texesNav[i].classList.remove("active");
-        }
-      }
-    } else {
-      taxesImagerItem[3].classList.remove("active");
-      taxesImages.classList.remove("step7");
-      fadeBackground.classList.remove("step7");
-      texesNav[3].classList.remove("active");
-    }
-  };
-
   const texesNav = document.querySelectorAll(".navigationItem");
-
-  texesNav.forEach((item, index) => {
-    item.addEventListener("click", function () {
-      // Добавляем класс Active текущему элементу
-      this.classList.add("active");
-
-      // Удаляем класс Active у всех остальных элементов
-      texesNav.forEach((otherItem) => {
-        if (otherItem !== this) {
-          otherItem.classList.remove("active");
-        }
-      });
-
-      // Устанавливаем координаты для прокрутки
-      let scrollPosition;
-      switch (index) {
-        case 0:
-          scrollPosition = screenHeight * 3;
-          break;
-        case 1:
-          scrollPosition = screenHeight * 3.5;
-          break;
-        case 2:
-          scrollPosition = screenHeight * 4;
-          break;
-        case 3:
-          scrollPosition = screenHeight * 4.5;
-          break;
-        default:
-          scrollPosition = 0; // Если index выходит за пределы, прокручиваем в начало
+  if (!mediaQuery.matches) {
+    window.onscroll = function () {
+      var scrollTop = window.pageYOffset
+        ? window.pageYOffset
+        : document.documentElement.scrollTop
+        ? document.documentElement.scrollTop
+        : document.body.scrollTop;
+      if (scrollTop >= screenHeight * 1.5) {
+        aboutContainer.classList.add("step1");
+        aboutBackground.classList.add("step1");
+      } else {
+        aboutContainer.classList.remove("step1");
+        aboutBackground.classList.remove("step1");
       }
+      if (scrollTop >= screenHeight * 2) {
+        taxesImagerItem[0].classList.add("active");
+        aboutBackground.classList.add("step2");
+        about.classList.add("step2");
 
-      // Прокручиваем страницу по указанным координатам
-      window.scrollTo(0, scrollPosition);
+        setTimeout(() => {
+          fadeWrapper.classList.add("step2");
+        }, 10);
+      } else {
+        about.classList.remove("step2");
+        fadeWrapper.classList.remove("step2");
+        aboutBackground.classList.remove("step2");
+      }
+      if (scrollTop >= screenHeight * 2.5) {
+        stickyContainer.classList.add("step3");
+      } else {
+        stickyContainer.classList.remove("step3");
+      }
+      if (scrollTop >= screenHeight * 3) {
+        blur.classList.remove("active");
+        navigation.classList.add("small");
+        navigation.classList.remove("big");
+        stickyContainer.classList.add("step4");
+        texesNav[0].classList.add("active");
+      } else {
+        stickyContainer.classList.remove("step4");
+        texesNav[0].classList.add("active");
+      }
+      if (scrollTop >= screenHeight * 3.5) {
+        blur.classList.add("active");
+        navigation.classList.add("big");
+        navigation.classList.remove("small");
+        taxesImagerItem[1].classList.add("active");
+        taxesImagerItem[0].classList.remove("active");
+        taxesImages.classList.add("step5");
+        fadeBackground.classList.add("step5");
+        texesNav[1].classList.add("active");
+        for (let i = 0; i < texesNav.length; i++) {
+          if (i !== 1) {
+            texesNav[i].classList.remove("active");
+          }
+        }
+      } else {
+        taxesImagerItem[1].classList.remove("active");
+        taxesImages.classList.remove("step5");
+        fadeBackground.classList.remove("step5");
+        texesNav[1].classList.remove("active");
+      }
+      if (scrollTop >= screenHeight * 4) {
+        navigation.classList.add("small");
+        navigation.classList.remove("big");
+        taxesImagerItem[2].classList.add("active");
+        taxesImagerItem[1].classList.remove("active");
+
+        taxesImages.classList.add("step6");
+        fadeBackground.classList.add("step6");
+        texesNav[2].classList.add("active");
+        for (let i = 0; i < texesNav.length; i++) {
+          if (i !== 2) {
+            texesNav[i].classList.remove("active");
+          }
+        }
+      } else {
+        taxesImagerItem[2].classList.remove("active");
+        taxesImages.classList.remove("step6");
+        fadeBackground.classList.remove("step6");
+        texesNav[2].classList.remove("active");
+      }
+      if (scrollTop >= screenHeight * 4.5) {
+        navigation.classList.add("big");
+        navigation.classList.remove("small");
+        taxesImagerItem[3].classList.add("active");
+        taxesImagerItem[2].classList.remove("active");
+        taxesImages.classList.add("step7");
+        fadeBackground.classList.add("step7");
+        texesNav[3].classList.add("active");
+        for (let i = 0; i < texesNav.length; i++) {
+          if (i !== 3) {
+            texesNav[i].classList.remove("active");
+          }
+        }
+      } else {
+        taxesImagerItem[3].classList.remove("active");
+        taxesImages.classList.remove("step7");
+        fadeBackground.classList.remove("step7");
+        texesNav[3].classList.remove("active");
+      }
+    };
+  }
+  if (!mediaQuery.matches) {
+    texesNav.forEach((item, index) => {
+      item.addEventListener("click", function () {
+        // Добавляем класс Active текущему элементу
+        this.classList.add("active");
+
+        // Удаляем класс Active у всех остальных элементов
+        texesNav.forEach((otherItem) => {
+          if (otherItem !== this) {
+            otherItem.classList.remove("active");
+          }
+        });
+
+        // Устанавливаем координаты для прокрутки
+        let scrollPosition;
+        switch (index) {
+          case 0:
+            scrollPosition = screenHeight * 3;
+            break;
+          case 1:
+            scrollPosition = screenHeight * 3.5;
+            break;
+          case 2:
+            scrollPosition = screenHeight * 4;
+            break;
+          case 3:
+            scrollPosition = screenHeight * 4.5;
+            break;
+          default:
+            scrollPosition = 0; // Если index выходит за пределы, прокручиваем в начало
+        }
+
+        // Прокручиваем страницу по указанным координатам
+        window.scrollTo(0, scrollPosition);
+      });
     });
-  });
+  }
+
+  const textContainer = document.querySelector(".textContainer");
 
   circl2.onclick = function () {
+    if (mediaQuery.matches) {
+      textContainer.style.height = sliderText2.offsetHeight + "px";
+    }
+  
     sliderText2.classList.add("active");
     sliderText1.classList.remove("active");
     sliderText3.classList.remove("active");
@@ -208,6 +254,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
   circl1.onclick = function () {
+    if (mediaQuery.matches) {
+      textContainer.style.height = sliderText1.offsetHeight + "px";
+    }
+   
     sliderText1.classList.add("active");
     sliderText2.classList.remove("active");
     sliderText3.classList.remove("active");
@@ -235,6 +285,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
   circl3.onclick = function () {
+    if (mediaQuery.matches) {
+      textContainer.style.height = sliderText3.offsetHeight + "px";
+    }
+ 
     sliderText3.classList.add("active");
     sliderText2.classList.remove("active");
     sliderText1.classList.remove("active");
@@ -279,9 +333,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let sliderSubtitle = document.querySelectorAll(".sliderSubtitle");
   let headingContainer = document.querySelector(".headingContainer");
   let step = document.querySelectorAll(".step");
-  headingContainer.style.height =
-  sliderSubtitle[0].offsetHeight + "px";
-
+  let descriptionContainer = document.querySelector(".descriptionContainer");
+  headingContainer.style.height = sliderSubtitle[0].offsetHeight + "px";
+  descriptionContainer.style.height = getDescription[0].offsetHeight + "px";
   function nextSlide() {
     buttonPrev.classList.remove("active");
     for (let i = 0; i < slides.length; i++) {
@@ -294,6 +348,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ) {
         getDescription[i + 1].classList.add("active");
         getDescription[i].classList.remove("active");
+        descriptionContainer.style.height =
+          getDescription[i + 1].offsetHeight + "px";
         step[i + 1].classList.add("active");
         step[i].classList.remove("active");
 
@@ -328,6 +384,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (slides[i - 1]) {
           getDescription[i].classList.remove("active");
           getDescription[i - 1].classList.add("active");
+          descriptionContainer.style.height =
+            getDescription[i - 1].offsetHeight + "px";
+
           step[i].classList.remove("active");
           step[i - 1].classList.add("active");
           sliderSubtitle[i].classList.remove("active");
@@ -431,27 +490,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-
-  //   function accordionItemSize() {
-  //     for (i = 0; i < accordionTitle.length; i++) {
-  //       accordionItem[i].style.maxHeight = `${accordionTitle[i].offsetHeight}px`;
-  //     }
-  //   }
-  //   accordionItemSize();
-  //   for (i = 0; i < accordionTitle.length; i++) {
-  //     accordionTitle[i].addEventListener("click", toggleItem, false);
-  //   }
-  //   function toggleItem() {
-  //     let itemClass = this.parentNode.className;
-
-  //     for (i = 0; i < accordionItem.length; i++) {
-  //       accordionItem[i].className = "accordionItem";
-  //     }
-  //     if (itemClass == "accordionItem") {
-  //       this.parentNode.className = "accordionItem show";
-  //     }
-  //   }
-  //   window.addEventListener("resize", function () {
-  //     accordionItemSize();
-  //   });
 });
