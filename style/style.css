@@ -223,6 +223,7 @@ body {
   width: 100%;
   height: 100vh;
   z-index: 40;
+  background: var(--Black);
 }
 .wrapper .loader .loaderContainer {
   position: relative;
@@ -231,15 +232,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.wrapper .loader .loaderContainer .loaderImages {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .wrapper .loader .loaderContainer .title {
   z-index: 2;
@@ -707,7 +699,7 @@ body {
 .fadeWrapper {
   margin: -250vh 0 0 0;
   position: relative;
-  height: 500vh;
+  height: 530vh;
   width: 100%;
   opacity: 0;
   transition: 0.4s ease-out opacity;

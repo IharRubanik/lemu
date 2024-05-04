@@ -25,8 +25,8 @@ window.addEventListener('load', function(){
     window.scrollTo(0, 0);
   }
 
-  setTimeout(ifPreloaderLoad, 3000);
-  setTimeout(removePreloader, 3500);
+  setTimeout(ifPreloaderLoad, 5000);
+  setTimeout(removePreloader, 5500);
 
 })
 
