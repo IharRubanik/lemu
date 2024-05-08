@@ -78,7 +78,12 @@
     font-size: 4.8vw;
   }
   .button:hover {
+    border-radius: 2.133vw;
+    background: var(--White);
+  }
+  .button.click {
     border-radius: 4.8vw;
+    background: var(--Orange);
   }
   .buttonSlider {
     width: 15.733vw;
@@ -87,7 +92,12 @@
     border-radius: 2.133vw;
   }
   .buttonSlider:hover {
+    border: 0.267vw solid var(--White);
+    background: none;
+  }
+  .buttonSlider.click {
     border: 0.267vw solid var(--Orange);
+    background: var(--Orange);
   }
   .wrapper .loader {
     height: var(--app-height);
@@ -293,7 +303,7 @@
     font-size: 18.133vw;
   }
   .main .mainContainer .rightBlock .content .description {
-    font-size: 4.533vw;
+    font-size: 3.733vw;
   }
   .main .mainContainer .rightBlock .buttonRound {
     display: none;
@@ -665,11 +675,11 @@
     opacity: 0;
     transition: 0.25s ease-out opacity;
   }
-  .faq .faqContainer .accordionContainer .accordionItem:hover .headingContainer .cross div {
-    background: var(--Orange);
+  .faq .faqContainer .accordionContainer .accordionItem:hover .cross div {
+    background: var(--White);
   }
-  .faq .faqContainer .accordionContainer .accordionItem:hover .headingContainer .heading5 {
-    color: var(--Orange);
+  .faq .faqContainer .accordionContainer .accordionItem:hover .heading5 {
+    color: var(--White);
   }
   .faq .faqContainer .accordionContainer .accordionItem.show .cross div {
     background: var(--Orange);
@@ -684,7 +694,7 @@
     opacity: 1;
   }
   .footer {
-    padding: 193.6vw 0 24.533vw 0;
+    padding: 193.6vw 0 24vw 0;
   }
   .footer .footerContainer .centrBlock .arrow {
     width: 18.933vw;

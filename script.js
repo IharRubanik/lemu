@@ -1,54 +1,49 @@
 document.querySelector("body").style.overflowY = "hidden";
 document.addEventListener("DOMContentLoaded", function () {
+  const mediaQuery = window.matchMedia("only screen and (max-width: 1000px)");
   const smoothLinks = document.querySelectorAll('a[href^="#"]');
   for (let smoothLink of smoothLinks) {
     smoothLink.addEventListener("click", function (e) {
       e.preventDefault();
       const id = smoothLink.getAttribute("href");
-
       document.querySelector(id).scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     });
   }
-
-  // loader
-
-window.addEventListener('load', function(){
-  function ifPreloaderLoad() {
-    document.querySelector(".loader").classList.add("done");
-  }
-  function removePreloader() {
-    document.querySelector(".loader").remove();
-    document.querySelector("body").style.overflowY = "auto";
-    window.scrollTo(0, 0);
+  if (mediaQuery.matches) {
+    const button = document.querySelector(".button");
+    button.addEventListener("click", function () {
+      button.classList.add("click");
+      setTimeout(() => {
+        button.classList.remove("click");
+      }, 250);
+    });
   }
 
-  setTimeout(ifPreloaderLoad, 3000);
-  setTimeout(removePreloader, 3500);
-
-})
-
-
-  const mediaQuery = window.matchMedia("only screen and (max-width: 1000px)");
-
+  // smooth scroll
   if (!mediaQuery.matches) {
-    document.querySelector('#journeyButton').addEventListener('click', function() {
+    document
+      .querySelector("#journeyButton")
+      .addEventListener("click", function () {
         const topPosition = screenHeight * 2;
         window.scrollTo({
-            top: topPosition,
-            behavior: 'smooth'
+          top: topPosition,
+          behavior: "smooth",
         });
-    });
-    document.querySelector('#lemunomicsButton').addEventListener('click', function() {
+      });
+    document
+      .querySelector("#lemunomicsButton")
+      .addEventListener("click", function () {
         const topPosition = screenHeight * 3;
         window.scrollTo({
-            top: topPosition,
-            behavior: 'smooth'
+          top: topPosition,
+          behavior: "smooth",
         });
-    });
+      });
 
+    // height
     const appHeight = () => {
       const doc = document.documentElement;
       doc.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -58,16 +53,30 @@ window.addEventListener('load', function(){
       appHeight();
     });
     appHeight();
+  }
 
-}
+  // loader
+  window.addEventListener("load", function () {
+    function ifPreloaderLoad() {
+      document.querySelector(".loader").classList.add("done");
+    }
+    function removePreloader() {
+      document.querySelector(".loader").remove();
+      document.querySelector("body").style.overflowY = "auto";
+      window.scrollTo(0, 0);
+    }
+    setTimeout(ifPreloaderLoad, 3000);
+    setTimeout(removePreloader, 3500);
+  });
 
+  // burgerMenu
   const openMenu = document.querySelector(".open-menu");
   const closeMemu = document.querySelector(".close-menu");
   const header = document.querySelector(".header");
   const body = document.querySelector("body");
   const menuBlur = document.querySelector(".menuBlur");
   if (mediaQuery.matches) {
-    const navItem = document.querySelectorAll('.navItem')
+    const navItem = document.querySelectorAll(".navItem");
     openMenu.addEventListener("click", function () {
       header.classList.add("active");
       body.style.overflow = "hidden";
@@ -83,35 +92,19 @@ window.addEventListener('load', function(){
       }, 250);
     });
 
-
     for (let i = 0; i < navItem.length; i++) {
-      navItem[i].addEventListener('click', function () {
+      navItem[i].addEventListener("click", function () {
         header.classList.remove("active");
         body.style.overflow = "visible";
         menuBlur.classList.remove("active");
         setTimeout(() => {
           menuBlur.style.zIndex = -1;
         }, 250);
-      })
-      
+      });
     }
-
   }
 
-  let circlBackground = document.querySelector(".circl-background");
-  let circl2 = document.querySelector(".top");
-  let circl1 = document.querySelector(".active");
-  let circl3 = document.querySelector(".left");
-  let sliderText1 = document.querySelector(".slider-text1");
-  let sliderText2 = document.querySelector(".slider-text2");
-  let sliderText3 = document.querySelector(".slider-text3");
-  let sliderImages1 = document.querySelector(".slider-images1");
-  let sliderImages2 = document.querySelector(".slider-images2");
-  let sliderImages3 = document.querySelector(".slider-images3");
-  let rotate = 0;
-
   // scroll
-
   let screenHeight = window.screen.height;
   const aboutContainer = document.querySelector(".aboutContainer");
   const aboutBackground = document.querySelector(".aboutBackground");
@@ -158,21 +151,19 @@ window.addEventListener('load', function(){
         stickyContainer.classList.remove("step3");
       }
       if (scrollTop >= screenHeight * 3) {
-       
         blur.classList.remove("active");
         navigation.classList.add("small");
         navigation.classList.remove("big");
         stickyContainer.classList.add("step4");
         texesNav[0].classList.add("active");
       } else {
-       
         stickyContainer.classList.remove("step4");
         texesNav[0].classList.add("active");
       }
       if (scrollTop >= screenHeight * 3.5) {
-        round.classList.remove('active')
+        round.classList.remove("active");
         setTimeout(() => {
-          round.style.zIndex = -1
+          round.style.zIndex = -1;
         }, 250);
         blur.classList.add("active");
         navigation.classList.add("big");
@@ -188,11 +179,11 @@ window.addEventListener('load', function(){
           }
         }
       } else {
-        round.classList.add('active')
+        round.classList.add("active");
         setTimeout(() => {
-          round.style.zIndex = 3
+          round.style.zIndex = 3;
         }, 250);
-    
+
         taxesImagerItem[1].classList.remove("active");
         taxesImages.classList.remove("step5");
         fadeBackground.classList.remove("step5");
@@ -242,17 +233,13 @@ window.addEventListener('load', function(){
   if (!mediaQuery.matches) {
     texesNav.forEach((item, index) => {
       item.addEventListener("click", function () {
-        // Добавляем класс Active текущему элементу
         this.classList.add("active");
 
-        // Удаляем класс Active у всех остальных элементов
         texesNav.forEach((otherItem) => {
           if (otherItem !== this) {
             otherItem.classList.remove("active");
           }
         });
-
-        // Устанавливаем координаты для прокрутки
         let scrollPosition;
         switch (index) {
           case 0:
@@ -268,22 +255,31 @@ window.addEventListener('load', function(){
             scrollPosition = screenHeight * 4.5;
             break;
           default:
-            scrollPosition = 0; // Если index выходит за пределы, прокручиваем в начало
+            scrollPosition = 0;
         }
 
-        // Прокручиваем страницу по указанным координатам
         window.scrollTo(0, scrollPosition);
       });
     });
   }
 
+  // sliderAbout
+  let circlBackground = document.querySelector(".circl-background");
+  let circl2 = document.querySelector(".top");
+  let circl1 = document.querySelector(".active");
+  let circl3 = document.querySelector(".left");
+  let sliderText1 = document.querySelector(".slider-text1");
+  let sliderText2 = document.querySelector(".slider-text2");
+  let sliderText3 = document.querySelector(".slider-text3");
+  let sliderImages1 = document.querySelector(".slider-images1");
+  let sliderImages2 = document.querySelector(".slider-images2");
+  let sliderImages3 = document.querySelector(".slider-images3");
+  let rotate = 0;
   const textContainer = document.querySelector(".textContainer");
-
   circl2.onclick = function () {
     if (mediaQuery.matches) {
       textContainer.style.height = sliderText2.offsetHeight + "px";
     }
-
     sliderText2.classList.add("active");
     sliderText1.classList.remove("active");
     sliderText3.classList.remove("active");
@@ -314,7 +310,6 @@ window.addEventListener('load', function(){
     if (mediaQuery.matches) {
       textContainer.style.height = sliderText1.offsetHeight + "px";
     }
-
     sliderText1.classList.add("active");
     sliderText2.classList.remove("active");
     sliderText3.classList.remove("active");
@@ -345,7 +340,6 @@ window.addEventListener('load', function(){
     if (mediaQuery.matches) {
       textContainer.style.height = sliderText3.offsetHeight + "px";
     }
-
     sliderText3.classList.add("active");
     sliderText2.classList.remove("active");
     sliderText1.classList.remove("active");
@@ -372,7 +366,6 @@ window.addEventListener('load', function(){
       circl1.classList.replace("left", "top");
     }
   };
-
   function rotatePlus() {
     rotate = rotate + 120;
     circlBackground.style.transform = `rotate(${rotate}deg)`;
@@ -393,11 +386,25 @@ window.addEventListener('load', function(){
   let descriptionContainer = document.querySelector(".descriptionContainer");
   headingContainer.style.height = sliderSubtitle[0].offsetHeight + "px";
   descriptionContainer.style.height = getDescription[0].offsetHeight + "px";
+
   function nextSlide() {
     buttonPrev.classList.remove("active");
+
+    if (mediaQuery.matches) {
+      buttonNext.classList.add("click");
+      setTimeout(() => {
+        buttonNext.classList.remove("click");
+      }, 250);
+    }
     for (let i = 0; i < slides.length; i++) {
       if (i == slides.length - 2) {
-        buttonNext.classList.add("active");
+        if (mediaQuery.matches) {
+          setTimeout(() => {
+            buttonNext.classList.add("active");
+          }, 250);
+        } else {
+          buttonNext.classList.add("active");
+        }
       }
       if (
         slides[i].classList.contains("active") &&
@@ -433,6 +440,12 @@ window.addEventListener('load', function(){
 
   function prevSlide() {
     buttonNext.classList.remove("active");
+    if (mediaQuery.matches) {
+      buttonPrev.classList.add("click");
+      setTimeout(() => {
+        buttonPrev.classList.remove("click");
+      }, 250);
+    }
     for (let i = 0; i < slides.length; i++) {
       if (
         slides[i].classList.contains("active") &&
@@ -461,7 +474,13 @@ window.addEventListener('load', function(){
           }
         }
         if (i == 1) {
-          buttonPrev.classList.add("active");
+          if (mediaQuery.matches) {
+            setTimeout(() => {
+              buttonPrev.classList.add("active");
+            }, 250);
+          } else {
+            buttonPrev.classList.add("active");
+          }
         }
         break;
       }
@@ -470,12 +489,8 @@ window.addEventListener('load', function(){
 
   buttonPrev.addEventListener("click", prevSlide);
   buttonNext.addEventListener("click", nextSlide);
-
   const canvas1 = document.getElementById("c1");
-
-  // Вешаем на прикосновение функцию handleTouchStart
   canvas1.addEventListener("touchstart", handleTouchStart, false);
-  // А на движение пальцем по экрану - handleTouchMove
   canvas1.addEventListener("touchmove", handleTouchMove, false);
 
   let xDown = null;
@@ -485,36 +500,30 @@ window.addEventListener('load', function(){
     xDown = evt.touches[0].clientX;
     yDown = evt.touches[0].clientY;
   }
-
   function handleTouchMove(evt) {
     if (!xDown || !yDown) {
       return;
     }
-
     let xUp = evt.touches[0].clientX;
     let yUp = evt.touches[0].clientY;
 
     let xDiff = xDown - xUp;
     let yDiff = yDown - yUp;
-    // немного поясню здесь. Тут берутся модули движения по оси абсцисс и ординат (почему модули? потому что если движение сделано влево или вниз, то его показатель будет отрицательным) и сравнивается, чего было больше: движения по абсциссам или ординатам. Нужно это для того, чтобы, если пользователь провел вправо, но немного наискосок вниз, сработал именно коллбэк для движения вправо, а ни как-то иначе.
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      /*most significant*/
       if (xDiff > 0) {
-        /* left swipe */
         prevSlide();
+        buttonPrev.classList.remove("click");
+        buttonNext.classList.remove("click");
       } else {
-        /* right swipe */
         nextSlide();
+        buttonPrev.classList.remove("click");
+        buttonNext.classList.remove("click");
       }
     } else {
-      // Это вам, в общем-то, не надо, вы ведь только влево-вправо собираетесь двигать
       if (yDiff > 0) {
-        /* up swipe */
       } else {
-        /* down swipe */
       }
     }
-    /* reset values */
     xDown = null;
     yDown = null;
   }

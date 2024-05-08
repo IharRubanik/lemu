@@ -447,7 +447,7 @@ body {
 .main .mainContainer .rightBlock .content .description {
   color: var(--White);
   font-family: Ubuntu;
-  font-size: 1.146vw;
+  font-size: 0.938vw;
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 1.604vw */
@@ -1137,10 +1137,10 @@ body {
   padding: 0 0 1.354vw 0;
   color: var(--Light-text);
 }
-.faq .faqContainer .accordionContainer .accordionItem:hover .headingContainer .cross div {
+.faq .faqContainer .accordionContainer .accordionItem:hover .cross div {
   background: var(--Orange);
 }
-.faq .faqContainer .accordionContainer .accordionItem:hover .headingContainer .heading5 {
+.faq .faqContainer .accordionContainer .accordionItem:hover .heading5 {
   color: var(--Orange);
 }
 .faq .faqContainer .accordionContainer .accordionItem.show .cross div {
@@ -1155,7 +1155,7 @@ body {
 
 .footer {
   position: relative;
-  padding: 2.76vw 0 9.531vw 0;
+  padding: 2.76vw 0 5vw 0;
 }
 .footer .footerContainer {
   display: flex;

@@ -436,7 +436,7 @@ body {
         .description {
           color: var(--White);
           font-family: Ubuntu;
-          font-size: 1.146vw;
+          font-size: 0.938vw;
           font-style: normal;
           font-weight: 500;
           line-height: 140%; /* 1.604vw */
@@ -815,7 +815,6 @@ body {
             background-image: url(".././img/taxesImages.png");
             background-size: 100% auto;
             transition: 0.25s ease-out transform;
-
             .taxesImagesWrapper {
               position: relative;
               width: 100%;
@@ -989,7 +988,6 @@ body {
         }
       }
     }
-
     .textContainer {
       width: 22.917vw;
       display: flex;
@@ -1056,7 +1054,6 @@ body {
     }
   }
 }
-
 .footerWrapper {
   position: relative;
   .footerBackgroung {
@@ -1123,7 +1120,6 @@ body {
           color: var(--Light-text);
         }
         &:hover {
-          .headingContainer {
             .cross {
               div {
                 background: var(--Orange);
@@ -1131,8 +1127,7 @@ body {
             }
             .heading5 {
               color: var(--Orange);
-            }
-          }
+            }      
         }
         &.show {
           .cross {
@@ -1153,7 +1148,7 @@ body {
 }
 .footer {
   position: relative;
-  padding: 2.76vw 0 9.531vw 0;
+  padding: 2.76vw 0 5vw 0;
   .footerContainer {
     display: flex;
     flex-direction: column;

@@ -10,7 +10,6 @@
       margin: 10.667vw 0 28.533vw 0;
     }
   }
-
   @keyframes arrow1 {
     0% {
       transform: translateY(0);
@@ -44,7 +43,6 @@
       transform: translateY(0);
     }
   }
-
   .heading1 {
     font-size: 25.867vw;
   }
@@ -66,7 +64,6 @@
   .textMini {
     font-size: 4vw;
   }
-
   .miniExplanation {
     padding: 2.133vw 4.267vw;
     border-radius: 2.133vw;
@@ -80,7 +77,12 @@
     border-radius: 2.133vw;
     font-size: 4.8vw;
     &:hover {
+      border-radius: 2.133vw;
+      background: var(--White);
+    }
+    &.click{
       border-radius: 4.8vw;
+      background: var(--Orange);
     }
   }
   .buttonSlider {
@@ -89,7 +91,12 @@
     border: 0.267vw solid var(--White);
     border-radius: 2.133vw;
     &:hover {
+      border: 0.267vw solid var(--White);
+      background: none;
+    }
+    &.click{
       border: 0.267vw solid var(--Orange);
+      background: var(--Orange);
     }
   }
   .wrapper {
@@ -101,8 +108,7 @@
           height: auto;
         }
         .bottomBlock {
-          gap: 2.667vw;
-         
+          gap: 2.667vw;        
           .icon {
             width: 4.267vw;
             animation: 1s icon linear infinite;
@@ -187,7 +193,6 @@
         display: block;
       }
     }
-
     .headerContainer {
       padding: 5.333vw;
       width: auto;
@@ -223,7 +228,6 @@
           height: auto;
         }
       }
-
     }
     .nav {
       margin: 6.4vw 0 0 0;
@@ -304,7 +308,7 @@
             }
           }
           .description {
-            font-size: 4.533vw;
+            font-size: 3.733vw;
           }
         }
         .buttonRound {
@@ -427,7 +431,6 @@
           width: 100%;
           height: auto;
           left: 0;
-
           top: 72vw;
           object-fit: contain;
         }
@@ -461,8 +464,7 @@
           display: flex;
           padding: 48vw 0 13.333vw 0;
           opacity: 1;
-          .round {
-           
+          .round {        
             left: 7.2vw;
             top: -13.333vw;
             width: 48.8vw;
@@ -628,7 +630,6 @@
           }
         }
       }
-
       .textContainer {
         width: 100%;
         .stepContainer {
@@ -639,7 +640,6 @@
             font-size: 4.267vw;
           }
         }
-
         .descriptionContainer {
           margin: 2.667vw 0 0 0;
           transition: 0.25s ease-out height;
@@ -647,7 +647,6 @@
       }
     }
   }
-
   .footerWrapper {
     position: relative;
     overflow: hidden;
@@ -690,16 +689,15 @@
             transition: 0.25s ease-out opacity;
           }
           &:hover {
-            .headingContainer {
+       
               .cross {
                 div {
-                  background: var(--Orange);
+                  background: var(--White);
                 }
               }
               .heading5 {
-                color: var(--Orange);
+                color: var(--White);
               }
-            }
           }
           &.show {
             .cross {
@@ -724,7 +722,7 @@
     }
   }
   .footer {
-    padding: 193.6vw 0 24.533vw 0;
+    padding: 193.6vw 0 24vw 0;
     .footerContainer {
       .centrBlock {
         .arrow {
